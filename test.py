@@ -51,14 +51,23 @@ def index():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == "來張圖片":
-        url = "https://imgur.com/a/PyNw5"
+        #url = "https://imgur.com/a/PyNw5"
+        #image_message = ImageSendMessage(
+        #    original_content_url=url,
+        #    preview_image_url=url
+        #)
+        #line_bot_api.reply_message(
+        #    event.reply_token, image_message)
+        #return 0
         image_message = ImageSendMessage(
-            original_content_url=url,
-            preview_image_url=url
+            original_content_url='https://example.com/original.jpg',
+            preview_image_url='https://example.com/preview.jpg')
+    if event.message.text == "唱歌":
+        print('sing')
+        audio_message = AudioSendMessage(
+            original_content_url='https://example.com/original.m4a',
+            duration=240000
         )
-        line_bot_api.reply_message(
-            event.reply_token, image_message)
-        return 0
     else:
         line_bot_api.reply_message(
           event.reply_token,
