@@ -72,7 +72,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, image_message)
         return 0
-    if event.message.text == "正妹"   
+    if event.message.text == "正妹":   
         url="https://i.imgur.com/Gi2dgAV.jpg"
         image_message = ImageSendMessage(
             original_content_url=url,
