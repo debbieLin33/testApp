@@ -49,7 +49,7 @@ def index():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == "來張圖片":
-        url = "https://imgur.com/vf7Mwff"
+        url = "https://i.imgur.com/pd9if76.png"
         image_message = ImageSendMessage(
             original_content_url=url,
             preview_image_url=url
