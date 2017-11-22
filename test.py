@@ -63,6 +63,15 @@ def handle_message(event):
             original_content_url='https://example.com/original.m4a',
             duration=240000
         )
+    if event.message.text == "微胖型女孩":
+        url = "https://i.imgur.com/fLd61II.png"
+        image_message = ImageSendMessage(
+            original_content_url=url,
+            preview_image_url=url
+        )
+        line_bot_api.reply_message(
+            event.reply_token, image_message)
+        return 0
     else:
         line_bot_api.reply_message(
           event.reply_token,
