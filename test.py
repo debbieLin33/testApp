@@ -20,7 +20,12 @@ app = Flask(__name__)
 line_bot_api = LineBotApi('Ec/+yv3KijdZ3V7lj1IGSFclSCEn5Avq2Ctq8ZySwLaHQH43+kBBEsmMU0ggzdoGvDSn+gxXUg/LadYn4DLRK4vbY6wzz0JwTHEnN1fJvwhjhCG0GdE6C/3I9X+YbW3RP1nc0MSLNSaWufQrn/ttawdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('d86151d60f372e05f0fd289ddd3bff68')
 
+client_id = "9824999341e0ca8"
+client_secret = "0fa7e0f509b09a78a1c88e435b0ed0ff0c0a0cc1"
+access_token = "2606dc43c96cddd87b3871a62982b768f03baaa0"
+refresh_token = "49cafcc77f21770efe63dc60b681364633191571"
 
+client = ImgurClient(client_id, client_secret, access_token, refresh_token)
 
 
 @app.route("/callback", methods=['POST'])
@@ -74,6 +79,17 @@ def handle_message(event):
         return 0
     if event.message.text == "正妹":   
         url="https://i.imgur.com/Gi2dgAV.jpg"
+        image_message = ImageSendMessage(
+            original_content_url=url,
+            preview_image_url=url
+        )
+        line_bot_api.reply_message(
+            event.reply_token, image_message)
+        return 0
+    if event.message.text == "抽帥狗":
+        images = client.get_album_images('3VZcD')
+        index = random.randint(0, len(images) - 1)
+        url = images[index].link
         image_message = ImageSendMessage(
             original_content_url=url,
             preview_image_url=url
