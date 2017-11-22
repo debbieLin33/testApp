@@ -72,7 +72,16 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, image_message)
         return 0
-    else:
+   if event.message.text == "正妹"   
+        url="https://i.imgur.com/Gi2dgAV.jpg"
+        image_message = ImageSendMessage(
+            original_content_url=url,
+            preview_image_url=url
+        )
+        line_bot_api.reply_message(
+            event.reply_token, image_message)
+        return 0
+     else:
         line_bot_api.reply_message(
           event.reply_token,
           TextSendMessage(text=event.message.text))
