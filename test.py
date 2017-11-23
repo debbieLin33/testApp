@@ -66,21 +66,15 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, image_message)
         return 0
-    if event.message.text == "唱歌":
-        print('sing')
-        audio_message = AudioSendMessage(
-            original_content_url='https://example.com/original.m4a',
-            duration=240000
-        )
-    if event.message.text == "微胖型女孩":
-        url = "https://i.imgur.com/fLd61II.png"
-        image_message = ImageSendMessage(
-            original_content_url=url,
-            preview_image_url=url
-        )
-        line_bot_api.reply_message(
-            event.reply_token, image_message)
-        return 0
+    #if event.message.text == "微胖型女孩":
+       # url = "https://i.imgur.com/fLd61II.png"
+     #   image_message = ImageSendMessage(
+      #      original_content_url=url,
+       #     preview_image_url=url
+        #)
+        #line_bot_api.reply_message(
+         #   event.reply_token, image_message)
+        #return 0
     if event.message.text == "正妹":   
         url="https://i.imgur.com/Gi2dgAV.jpg"
         image_message = ImageSendMessage(
@@ -90,6 +84,29 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, image_message)
         return 0
+     if event.message.text == "抽正妹":
+        images = client.get_album_images('bgZsu')
+        index = random.randint(0, len(images) - 1)
+        url = images[index].link
+        image_message = ImageSendMessage(
+            original_content_url=url,
+            preview_image_url=url
+        )
+        line_bot_api.reply_message(
+            event.reply_token, image_message)
+        return 0
+     if event.message.text == "抽帥哥":
+        images = client.get_album_images('HahMV')
+        index = random.randint(0, len(images) - 1)
+        url = images[index].link
+        image_message = ImageSendMessage(
+            original_content_url=url,
+            preview_image_url=url
+        )
+        line_bot_api.reply_message(
+            event.reply_token, image_message)
+        return 0
+
     if event.message.text == "抽帥狗":
         images = client.get_album_images('3VZcD')
         index = random.randint(0, len(images) - 1)
