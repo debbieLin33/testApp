@@ -101,9 +101,9 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, image_message)
         return 0
-    if event.message.text == "抽-":
+    if '點歌-' in event.message.text:
         a,b = event.message.text.split("-")
-        query_string = urllib.parse.urlencode({"search_query" : "perfect"})
+        query_string = urllib.parse.urlencode({"search_query" : b})
         html_content = urllib.request.urlopen("http://www.youtube.com/results?" + query_string)
         search_results = re.findall(r'href=\"\/watch\?v=(.{11})', html_content.read().decode())
         print("http://www.youtube.com/watch?v=" + search_results[0])
