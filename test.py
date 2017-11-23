@@ -127,10 +127,17 @@ def handle_message(event):
         line_bot_api.reply_message(
           event.reply_token,
           TextSendMessage("http://www.youtube.com/watch?v=" + search_results[0]))
-    else:
+    if '吃什麼' in event.message.text:
+        foo = ['粹義', '九尾', '主廚蓋飯', '鼎香酸辣粉','名廚','泰之雲','洪師傅','mos burger','火鍋','韓式料理']
+        secure_random = random.SystemRandom()
+        res = secure_random.choice(foo)
         line_bot_api.reply_message(
-          event.reply_token,
-          TextSendMessage(text=event.message.text))
+           event.reply_token,
+           TextSendMessage(text=res))
+   # else:
+    #    line_bot_api.reply_message(
+     #     event.reply_token,
+      #    TextSendMessage(text=event.message.text))
 
 
 
