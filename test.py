@@ -84,7 +84,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, image_message)
         return 0
-     if event.message.text == "抽正妹":
+    if event.message.text == "抽正妹":
         images = client.get_album_images('bgZsu')
         index = random.randint(0, len(images) - 1)
         url = images[index].link
@@ -95,7 +95,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, image_message)
         return 0
-     if event.message.text == "抽帥哥":
+    if event.message.text == "抽帥哥":
         images = client.get_album_images('HahMV')
         index = random.randint(0, len(images) - 1)
         url = images[index].link
